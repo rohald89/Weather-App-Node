@@ -13,6 +13,8 @@ const forecast = require('./utils/forecast');
 // https://expressjs.com/en/4x/api.html#express
 // Creates an Express application. The express() function is a top-level function exported by the express module.
 const app = express();  
+// port to listen to for Heroku, if that doesn't exist use port 3000 for localhost
+const port = process.env.PORT || 3000;
 
 //Define paths for Express config
     //  https://nodejs.org/dist/latest-v14.x/docs/api/path.html#path_path_join_paths
@@ -114,6 +116,6 @@ app.get('*', (req, res) => {
 
 
 // https://expressjs.com/en/4x/api.html#app.listen
-app.listen(3000, () => {  
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {  
+    console.log(`Server is up on port: ${port} `)
 });
